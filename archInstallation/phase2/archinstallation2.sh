@@ -112,6 +112,8 @@ do
     fi
 done < ${BASEDIR}/AURpackages.txt
 
-echo $password | su -c $BASEDIR/aurInstallation.sh $user || die "AUR Installation failed."
+cp $BASEDIR/aurInstallation.sh /home/$user/Downloads/
+
+echo "Please install AUR after reboot using the shell script in your download folder."
 
 exit 0

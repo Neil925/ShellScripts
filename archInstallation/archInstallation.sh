@@ -75,7 +75,7 @@ if [ $vm ]; then
     command+=" -v" 
 fi
 
-if [ $vm ]; then
+if [ $iommu ]; then
     command+=" -i" 
 fi
 
