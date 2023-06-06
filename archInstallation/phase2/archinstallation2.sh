@@ -44,12 +44,12 @@ usermod -aG wheel,audio,video,optical,storage $user
 echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
 pacman -Sys
 
-sudo pacman -S reflector --noconfirm
+pacman -S reflector --noconfirm
 reflector > /etc/pacman.d/mirrorlist
 
 pacman -S sudo nano --noconfirm || die "nano install failed."
 
-echo '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' | sudo EDITOR='tee -a' visudo
+echo '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' | EDITOR='tee -a' visudo
 
 pacman -S grub efibootmgr dosfstools os-prober mtools --noconfirm || die "Boot manger packages failed."
 
