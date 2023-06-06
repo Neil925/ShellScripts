@@ -81,6 +81,5 @@ fi
 
 eval $command || die "Command fialed"
 
-reboot
-
+echo -e "Instllation complete.\nFeel free to reboot when ready."
 exit 0
