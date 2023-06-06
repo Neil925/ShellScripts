@@ -68,4 +68,5 @@ spectacle
 sweeper
 kalk
 krecorder
-obs-studioman
+obs-studio
+man
