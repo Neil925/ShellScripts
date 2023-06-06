@@ -42,11 +42,10 @@ echo -e "$password\n$password" | (passwd $user) || die "user password failed."
 usermod -aG wheel,audio,video,optical,storage $user
 
 echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
+pacman -Sys
 
 sudo pacman -S reflector --noconfirm
 reflector > /etc/pacman.d/mirrorlist
-
-pacman -Sys
 
 pacman -S sudo nano --noconfirm || die "nano install failed."
 
