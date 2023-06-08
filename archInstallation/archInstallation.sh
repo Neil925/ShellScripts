@@ -81,5 +81,7 @@ fi
 
 eval $command || die "Command fialed"
 
+arch-chroot /mnt rm -r /archInstallation
+
 echo -e "Instllation complete.\nFeel free to reboot when ready."
 exit 0

@@ -101,7 +101,7 @@ if [[ $PACKAGES = *qemu* ]] && [[ $PACKAGES = *libvirt* ]] && [[ $PACKAGES = *ov
 fi
 
 AUR=/home/$user/AUR
-su -c "mkdir $AUR $user" 
+su -c "mkdir $AUR" $user 
 cd $AUR
 
 while read -r line
