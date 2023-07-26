@@ -1,6 +1,6 @@
 #!/bin/sh
 
-die(){ echo >&2 "$@"; exit 1; }
+die(){ echo >&2 "$@"; read -n 1 -p Exit?; exit 1; }
 
 while getopts m:u:h:p:vi opt; do
     case "${opt}" in
