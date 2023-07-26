@@ -15,6 +15,17 @@ while getopts m:u:h:p:vi opt; do
     esac
 done
 
+BASEDIR="/archInstallation/phase2"
+
+PACKAGES=""
+
+while read -r line; do PACKAGES+="${line} "; done < ${BASEDIR}/packages.txt
+
+# Might get rid of this later
+if [ $PACKAGES = "" ]; then
+    die "Packes are empty."
+fi
+
 ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
 hwclock --systohc
 
@@ -42,6 +53,12 @@ echo -e "$password\n$password" | (passwd $user) || die "user password failed."
 usermod -aG wheel,audio,video,optical,storage $user
 
 echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
+
+if [[ $PACKAGES = *linux-ck* ]]; then
+    echo -e "\n[repo-ck]\nServer = http://repo-ck.com/\$arch" >> /etc/pacman.conf
+    pacman-key -r 5EE46C4C --keyserver keyserver.ubuntu.com && pacman-key --lsign-key 5EE46C4C || die "linux-ck key signing failed"
+fi
+
 pacman -Sys
 
 pacman -S reflector --noconfirm
@@ -65,17 +82,6 @@ else
 fi
 
 grub-mkconfig -o /boot/grub/grub.cfg || die "Grub config failed."
-
-PACKAGES=""
-
-BASEDIR="/archInstallation/phase2"
-
-while read -r line; do PACKAGES+="${line} "; done < ${BASEDIR}/packages.txt
-
-# Might get rid of this later
-if [ $PACKAGES = "" ]; then
-    die "Packes are empty."
-fi
 
 pacman -S $PACKAGES || die "packages failed."
 
