@@ -39,6 +39,8 @@ SWAP=/dev/$module\2
 # 3 is root_partition
 ROOT=/dev/$module\3
 
+sed -i 's/#Color/Color/g' /etc/pacman.conf && sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 5/g' /etc/locale.gen || die "pacman conf changes failed"
+
 echo location is $LOCATION
 echo efi is $EFI
 echo swap is $SWAP

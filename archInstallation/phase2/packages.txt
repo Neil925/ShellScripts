@@ -72,3 +72,5 @@ obs-studio
 man
 linux-ck-generic-v3
 linux-ck-generic-v3-headers
+libretro
+libreoffice-fresh

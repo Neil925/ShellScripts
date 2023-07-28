@@ -48,3 +48,9 @@ https://aur.archlinux.org/android-studio.git
 
 nvidia-tweaks
 https://aur.archlinux.org/nvidia-tweaks.git
+
+headsetcontrol
+https://aur.archlinux.org/headsetcontrol.git
+
+gnome-network-displays
+https://aur.archlinux.org/gnome-network-displays.git
