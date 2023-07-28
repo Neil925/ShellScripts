@@ -55,7 +55,7 @@ usermod -aG wheel,audio,video,optical,storage $user
 echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
 
 sed -i 's/#Color/Color/g' /etc/pacman.conf
-sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 5/g' /etc/locale.gen
+sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 5/g' /etc/pacman.conf
 
 if [[ $PACKAGES = *linux-ck* ]]; then
     echo -e "\n[repo-ck]\nServer = http://repo-ck.com/\$arch" >> /etc/pacman.conf
@@ -69,7 +69,7 @@ reflector > /etc/pacman.d/mirrorlist
 
 pacman -S sudo nano --noconfirm || die "nano install failed."
 
-echo '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' | EDITOR='tee -a' visudo
+echo -e '%wheel ALL=(ALL:ALL) NOPASSWD: ALL\nDefaults        env_reset,timestamp_timeout=-1' | EDITOR='tee -a' visudo
 
 pacman -S grub efibootmgr dosfstools os-prober mtools --noconfirm || die "Boot manger packages failed."
 
