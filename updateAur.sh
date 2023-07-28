@@ -1,11 +1,25 @@
 #!/bin/sh
 
-for d in /home/neil/AUR/*/ ; do
+AUR=/home/$USER/AUR
+
+for d in $AUR/*/ ; do
     cd $d
-    if [[ `git pull` = "Already up to date." ]]; then 
+    rm -r *.tar.zst &> /dev/null
+    rm -r *.deb &> /dev/null
+    rm -r *.deb.part &> /dev/null
+    echo "Checking directory ${d}."
+    sleep 1
+    if [[ `git pull` = "Already up to date." ]]; then
         continue;
-    else
-        echo "${d/"/home/neil/AUR/"/""} will now be updated."
-        makepkg -s -i -c
     fi
+
+    PACKAGE=`echo $d | grep -Po "(?<=\/home\/${USER}\/AUR\/)(.*)(?=\/)"`
+    figlet $PACKAGE
+    sleep 3
+
+    if [[ $PACKAGE = *flutter* ]]; then
+        flutter upgrade -f;
+    fi
+    
+    makepkg -sic --noconfirm
 done
