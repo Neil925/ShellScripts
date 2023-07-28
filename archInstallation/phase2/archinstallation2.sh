@@ -54,6 +54,9 @@ usermod -aG wheel,audio,video,optical,storage $user
 
 echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
 
+sed -i 's/#Color/Color/g' /etc/pacman.conf
+sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 5/g' /etc/locale.gen
+
 if [[ $PACKAGES = *linux-ck* ]]; then
     echo -e "\n[repo-ck]\nServer = http://repo-ck.com/\$arch" >> /etc/pacman.conf
     pacman-key -r 5EE46C4C --keyserver keyserver.ubuntu.com && pacman-key --lsign-key 5EE46C4C || die "linux-ck key signing failed"
