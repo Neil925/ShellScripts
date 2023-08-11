@@ -13,7 +13,6 @@ python
 dotnet-runtime
 dotnet-sdk
 mono
-nano
 unrar
 net-tools
 nodejs
@@ -74,3 +73,12 @@ linux-ck-generic-v3
 linux-ck-generic-v3-headers
 libretro
 libreoffice-fresh
+cdrtools
+cdrtools
+glances
+pipewire-pulse
+helvum
+easyeffects
+lsp-plugins
+calf
+mda.lv2

@@ -54,3 +54,6 @@ https://aur.archlinux.org/headsetcontrol.git
 
 gnome-network-displays
 https://aur.archlinux.org/gnome-network-displays.git
+
+discord-screenaudio
+https://aur.archlinux.org/discord-screenaudio.git
