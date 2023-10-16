@@ -29,7 +29,6 @@ virt-manager
 ebtables
 dnsmasq
 virt-viewer
-youtube-dl
 discord
 code
 filezilla
@@ -73,7 +72,6 @@ linux-ck-generic-v3
 linux-ck-generic-v3-headers
 libretro
 libreoffice-fresh
-cdrtools
 cdrtools
 glances
 pipewire-pulse
