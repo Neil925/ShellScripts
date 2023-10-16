@@ -4,7 +4,7 @@ ntfs-3g
 intel-ucode
 ufw
 git
-nvidia
+nvidia-dkms
 nvidia-settings
 xorg-server
 plasma
