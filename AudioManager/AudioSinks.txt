@@ -9,3 +9,4 @@ RocketLeague
 SonicMania
 csgo_linux64
 MY HERO ULTRA RUMBLE
+SonsOfTheForest.exe
