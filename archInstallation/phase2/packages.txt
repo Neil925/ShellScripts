@@ -82,3 +82,4 @@ calf
 mda.lv2
 gnome-disk-utility
 cups
+neofetch

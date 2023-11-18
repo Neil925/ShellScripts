@@ -57,3 +57,12 @@ https://aur.archlinux.org/gnome-network-displays.git
 
 discord-screenaudio
 https://aur.archlinux.org/discord-screenaudio.git
+
+clion
+https://aur.archlinux.org/clion.git
+
+corectrl-git
+https://aur.archlinux.org/corectrl-git.git
+
+zoom
+https://aur.archlinux.org/zoom.git
