@@ -107,7 +107,7 @@ if [[ $PACKAGES = *qemu* ]] && [[ $PACKAGES = *libvirt* ]] && [[ $PACKAGES = *ov
     fi
 fi
 
-cp $BASEDIR/aurinstallation.sh /home/$user/Downloads/ || die "Couldn't copy aur installation script to dowlaods.";
+cp $BASEDIR/aurinstallation.sh /home/$user/ || die "Couldn't copy aur installation script to dowlaods.";
 
 echo "================================================================================";
 echo "Please install AUR after reboot using the shell script in your download folder.";
