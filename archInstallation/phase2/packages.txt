@@ -12,7 +12,7 @@ libva-mesa-driver
 lib32-libva-mesa-driver
 mesa-vdpau
 lib32-mesa-vdpau
-plasma-desktop
+plasma
 sddm
 curl
 python
