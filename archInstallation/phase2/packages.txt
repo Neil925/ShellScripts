@@ -13,6 +13,7 @@ lib32-libva-mesa-driver
 mesa-vdpau
 lib32-mesa-vdpau
 plasma-desktop
+sddm
 curl
 python
 mono

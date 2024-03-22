@@ -86,7 +86,7 @@ grub-mkconfig -o /boot/grub/grub.cfg || die "Grub config failed."
 
 pacman -S $PACKAGES || die "packages failed."
 
-if [[ $PACKAGES = *xorg* ]] || [[ $PACKAGES = *wayland* ]]; then
+if [[ $PACKAGES = *sddm* ]]; then
     systemctl enable sddm.service
 fi
 
