@@ -10,3 +10,10 @@ SonicMania
 csgo_linux64
 MY HERO ULTRA RUMBLE
 SonsOfTheForest.exe
+JustCause3.exe
+Lethal Company.exe
+dolphin-emu
+yuzu
+RPCS3
+Sonic Generations
+One Finger Death Punch

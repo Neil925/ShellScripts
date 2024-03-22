@@ -62,10 +62,8 @@ if [[ $PACKAGES = *linux-ck* ]]; then
     pacman-key -r 5EE46C4C --keyserver keyserver.ubuntu.com && pacman-key --lsign-key 5EE46C4C || die "linux-ck key signing failed"
 fi
 
-pacman -Sys
-
-pacman -S reflector --noconfirm
-reflector > /etc/pacman.d/mirrorlist
+pacman -Sys reflector --noconfirm
+reflector -p "https,http" > /etc/pacman.d/mirrorlist
 
 pacman -S sudo nano --noconfirm || die "nano install failed."
 
@@ -109,19 +107,10 @@ if [[ $PACKAGES = *qemu* ]] && [[ $PACKAGES = *libvirt* ]] && [[ $PACKAGES = *ov
     fi
 fi
 
-AUR=/home/$user/AUR
-su -c "mkdir $AUR" $user 
-cd $AUR
+cp $BASEDIR/aurinstallation.sh /home/$user/Downloads/ || die "Couldn't copy aur installation script to dowlaods.";
 
-while read -r line
-do 
-    if [[ $line = https://aur.archlinux.org/* ]]; then
-        su -c "git clone $line" $user
-    fi
-done < ${BASEDIR}/AURpackages.txt
+echo "================================================================================";
+echo "Please install AUR after reboot using the shell script in your download folder.";
+echo "================================================================================";
 
-cp $BASEDIR/aurInstallation.sh /home/$user/Downloads/
-
-echo "Please install AUR after reboot using the shell script in your download folder."
-
-exit 0
+exit 0;

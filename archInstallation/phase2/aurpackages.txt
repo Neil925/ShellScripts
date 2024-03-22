@@ -1,0 +1,12 @@
+ckb-next
+google-chrome
+nordvpn-bin
+gitkraken
+postman-bin
+rider
+teamviewer
+youtube-music-bin
+polymc
+headsetcontrol
+corectrl-git
+webcord

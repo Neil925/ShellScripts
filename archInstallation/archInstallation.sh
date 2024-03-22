@@ -81,7 +81,7 @@ if [ $iommu ]; then
     command+=" -i" 
 fi
 
-eval $command || die "Command fialed"
+eval $command || die "Second phase fialed to start"
 
 arch-chroot /mnt rm -r /archInstallation
 
