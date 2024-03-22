@@ -63,11 +63,11 @@ swapon $SWAP || die "swapon failed."
 
 mount $ROOT /mnt || die "Mount failed."
 
-pacstrap /mnt base linux linux-firmware || die "pacmstrap failed."
+pacstrap /mnt base linux linux-firmware || die "pacstrap failed."
 
 genfstab -U /mnt >> /mnt/etc/fstab || die "genfstab failed."
 
-cp -r $BASEDIR /mnt
+cp -r $BASEDIR /mnt || die "Failed to copy phase two into mount.";
 
 arch-chroot /mnt chmod 755 /archInstallation/phase2/*
 

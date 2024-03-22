@@ -21,7 +21,6 @@ PACKAGES=""
 
 while read -r line; do PACKAGES+="${line} "; done < ${BASEDIR}/packages.txt
 
-# Might get rid of this later
 if [ $PACKAGES = "" ]; then
     die "Packes are empty."
 fi
@@ -62,10 +61,11 @@ if [[ $PACKAGES = *linux-ck* ]]; then
     pacman-key -r 5EE46C4C --keyserver keyserver.ubuntu.com && pacman-key --lsign-key 5EE46C4C || die "linux-ck key signing failed"
 fi
 
-pacman -Sys reflector --noconfirm
-reflector -p "https,http" > /etc/pacman.d/mirrorlist
+pacman -Sys reflector --noconfirm || die "Reflector failed to install.";
+cp /etc/pacman.d/mirrorlist /etc/pacman.d/backup.mirrorlist;
+reflector -p "https,http" > result.txt && cat result.txt > /etc/pacman.d/mirrorlist;
 
-pacman -S sudo nano --noconfirm || die "nano install failed."
+pacman -S sudo nano --noconfirm || die "nano install failed.";
 
 echo -e '%wheel ALL=(ALL:ALL) NOPASSWD: ALL\nDefaults        env_reset,timestamp_timeout=-1' | EDITOR='tee -a' visudo
 

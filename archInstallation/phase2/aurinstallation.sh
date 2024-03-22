@@ -5,10 +5,15 @@ git clone https://aur.archlinux.org/yay-bin.git;
 cd yay-bin;
 makepkg -sic --noconfirm;
 
-AURPACKAGES="";
+PACKAGES="";
 
-while read -r line; do AURPACKAGES+="${line} "; done < ${BASEDIR}/aurpackages.txt
+while read -r line; do PACKAGES+="${line} "; done < ${BASEDIR}/aurpackages.txt
 
-yay -Sa $AURPACKAGES --noconfirm;
+if [ $PACKAGES = "" ]; then
+    echo "Packes are empty.";
+    exit 1;
+fi
+
+yay -Sa $PACKAGES --noconfirm;
 
 exit 0;
