@@ -6,11 +6,13 @@ cd yay-bin;
 makepkg -sic --noconfirm;
 cd ../;
 
+sudo sed -i 's/ debug / !debug /g' /etc/makepkg.conf;
+
 PACKAGES="";
 
 while read -r line; do PACKAGES+="${line} "; done < ${BASEDIR}/aurpackages.txt
 
-if [ $PACKAGES = "" ]; then
+if [[ $PACKAGES = "" ]]; then
     echo "Packes are empty.";
     exit 1;
 fi

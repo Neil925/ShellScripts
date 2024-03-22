@@ -94,6 +94,8 @@ if [[ $PACKAGES = *networkmanager* ]]; then
     systemctl enable NetworkManager.service
 fi
 
+OPTIONS=(strip docs !libtool !staticlibs emptydirs zipman purge debug lto)
+
 if [[ $PACKAGES = *qemu* ]] && [[ $PACKAGES = *libvirt* ]] && [[ $PACKAGES = *ovmf* ]] && [[ $PACKAGES = *virt-manager* ]]; then
     if [ $iommu = "y" ]; then
         sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT="/&intel_iommu=on /'  /etc/default/grub
