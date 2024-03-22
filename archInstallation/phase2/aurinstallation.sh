@@ -1,9 +1,10 @@
 #!/bin/sh
 
-cd /home/$user/Downloads;
+cd /home/$(whoami)/Downloads;
 git clone https://aur.archlinux.org/yay-bin.git;
 cd yay-bin;
 makepkg -sic --noconfirm;
+cd ../;
 
 PACKAGES="";
 
