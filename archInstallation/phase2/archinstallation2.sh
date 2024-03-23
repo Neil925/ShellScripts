@@ -15,13 +15,13 @@ while getopts m:u:h:p:vi opt; do
     esac
 done
 
-BASEDIR="/archInstallation/phase2"
+BASEDIR="/phase2"
 
 PACKAGES=""
 
 while read -r line; do PACKAGES+="${line} "; done < ${BASEDIR}/packages.txt
 
-if [ $PACKAGES = "" ]; then
+if [[ $PACKAGES = "" ]]; then
     die "Packes are empty."
 fi
 
@@ -76,7 +76,7 @@ mkdir /boot/EFI
 
 mount /dev/$module\1 /boot/EFI || die "mount EFI failed."
 
-if [ $vm = "y" ]; then
+if [[ $vm = "y" ]]; then
     grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck || die "Grub install failed."
 else
     grub-install --target=x86_64-efi --efi-directory=/boot/EFI --removable || die "Grub install failed."
@@ -94,16 +94,14 @@ if [[ $PACKAGES = *networkmanager* ]]; then
     systemctl enable NetworkManager.service
 fi
 
-OPTIONS=(strip docs !libtool !staticlibs emptydirs zipman purge debug lto)
-
 if [[ $PACKAGES = *qemu* ]] && [[ $PACKAGES = *libvirt* ]] && [[ $PACKAGES = *ovmf* ]] && [[ $PACKAGES = *virt-manager* ]]; then
-    if [ $iommu = "y" ]; then
-        sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT="/&intel_iommu=on /'  /etc/default/grub
+    if [[ $iommu = "y" ]]; then
+        sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT="/&amd_iommu=on /'  /etc/default/grub
         grub-mkconfig -o /boot/grub/grub.cfg
     fi
     systemctl enable libvirtd.service
     systemctl enable virtlogd.socket
-    if [ $PACKAGES = *ebtalbes* ] && [ $PACKAGES = *dnsmasq* ]; then
+    if [[ $PACKAGES = *ebtalbes* ]] && [[ $PACKAGES = *dnsmasq* ]]; then
         virsh net-start default
         virsh net-autostart default
     fi
@@ -112,7 +110,7 @@ fi
 cp -r $BASEDIR/aur* /home/$user/ || die "Couldn't copy aur installation script to dowlaods.";
 
 echo "================================================================================";
-echo "Please install AUR after reboot using the shell script in your download folder.";
+echo "Please install AUR after reboot using the shell script in your home folder.";
 echo "================================================================================";
 
 exit 0;

@@ -10,7 +10,7 @@ sudo sed -i 's/ debug / !debug /g' /etc/makepkg.conf;
 
 PACKAGES="";
 
-while read -r line; do PACKAGES+="${line} "; done < ${BASEDIR}/aurpackages.txt
+while read -r line; do PACKAGES+="${line} "; done < aurpackages.txt
 
 if [[ $PACKAGES = "" ]]; then
     echo "Packes are empty.";

@@ -67,11 +67,11 @@ pacstrap /mnt base linux linux-firmware || die "pacstrap failed."
 
 genfstab -U /mnt >> /mnt/etc/fstab || die "genfstab failed."
 
-cp -r $BASEDIR /mnt || die "Failed to copy phase two into mount.";
+cp -r $BASEDIR/phase2 /mnt || die "Failed to copy phase two into mount.";
 
-arch-chroot /mnt chmod 755 /archInstallation/phase2/*
+arch-chroot /mnt chmod 755 /phase2/*
 
-command="arch-chroot /mnt /archInstallation/phase2/archinstallation2.sh -m $module -u $user -p $password -h $hostname"
+command="arch-chroot /mnt /phase2/archinstallation2.sh -m $module -u $user -p $password -h $hostname"
 
 if [ $vm ]; then
     command+=" -v" 
@@ -83,7 +83,7 @@ fi
 
 eval $command || die "Second phase fialed to start"
 
-arch-chroot /mnt rm -r /archInstallation
+arch-chroot /mnt rm -r /phase2
 
 echo -e "Instllation complete.\nFeel free to reboot when ready."
 exit 0
