@@ -1,10 +1,10 @@
 #!/bin/sh
 
-cd /home/$(whoami)/Downloads;
 git clone https://aur.archlinux.org/yay-bin.git;
 cd yay-bin;
 makepkg -sic --noconfirm;
 cd ../;
+rm -r yay-bin;
 
 sudo sed -i 's/ debug / !debug /g' /etc/makepkg.conf;
 

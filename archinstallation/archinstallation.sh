@@ -81,9 +81,9 @@ if [ $iommu ]; then
     command+=" -i" 
 fi
 
-eval $command || die "Second phase fialed to start"
+eval $command || die "Second phase fialed"
 
 arch-chroot /mnt rm -r /phase2
 
-echo -e "Instllation complete.\nFeel free to reboot when ready."
+echo -e "\nInstllation complete.\nFeel free to reboot when ready."
 exit 0

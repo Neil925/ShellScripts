@@ -22,7 +22,7 @@ PACKAGES=""
 while read -r line; do PACKAGES+="${line} "; done < ${BASEDIR}/packages.txt
 
 if [[ $PACKAGES = "" ]]; then
-    die "Packes are empty."
+    die "Packages are empty."
 fi
 
 ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
@@ -76,7 +76,7 @@ mkdir /boot/EFI
 
 mount /dev/$module\1 /boot/EFI || die "mount EFI failed."
 
-if [[ $vm = "y" ]]; then
+if [ $vm ]; then
     grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck || die "Grub install failed."
 else
     grub-install --target=x86_64-efi --efi-directory=/boot/EFI --removable || die "Grub install failed."
@@ -95,7 +95,7 @@ if [[ $PACKAGES = *networkmanager* ]]; then
 fi
 
 if [[ $PACKAGES = *qemu* ]] && [[ $PACKAGES = *libvirt* ]] && [[ $PACKAGES = *ovmf* ]] && [[ $PACKAGES = *virt-manager* ]]; then
-    if [[ $iommu = "y" ]]; then
+    if [ $iommu ]; then
         sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT="/&amd_iommu=on /'  /etc/default/grub
         grub-mkconfig -o /boot/grub/grub.cfg
     fi
