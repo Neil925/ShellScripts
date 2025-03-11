@@ -65,7 +65,6 @@ kfind
 kio-extras
 kmag
 kmix
-knotes
 konsole
 ksystemlog
 ktimer
